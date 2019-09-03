@@ -1,9 +1,28 @@
 package general;import java.util.ArrayList;
+import java.util.List;
 
 
 public class LowestCommonAncestor {
 
 	
+	
+	/**
+	 * path from root to node
+	 * @param root
+	 * @param path
+	 * @param k
+	 * @return
+	 */
+	
+	public Boolean printPath(TreeNode root, TreeNode dest, List<Integer> path){
+		if(root==null) return false;
+		if(root==dest||printPath(root.left,dest,path)||printPath(root.right,dest,path)){
+			//System.out.print("  " + root.data);
+			path.add(0,root.nodeValue);
+			return true;
+		}
+		return false;
+	}
 	/*
 	 * Method 1: time complexity: O(n), extra space
 	 */
